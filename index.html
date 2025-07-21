@@ -364,29 +364,36 @@
                 </div>
               </div>
             </div>
-          <!-- Play Now Button -->
+ <!-- "PLAY NOW" Button -->
 <div class="col-xl-5 col-lg-12 col-md-12 trailor-video">
-  <button onclick="openVideo()" class="btn btn-hover iq-button">▶ PLAY NOW</button>
+  <button onclick="openDrivePlayer()" class="btn btn-hover iq-button">▶ PLAY NOW</button>
 </div>
 
-<!-- Hidden Video Player (Google Drive Preview) -->
-<div id="videoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999;">
+<!-- Google Drive Video Modal -->
+<div id="drivePlayerModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999;">
   <div style="position:relative; width:80%; height:80%; margin:5% auto;">
-    <iframe id="driveVideo" src="" width="100%" height="100%" allow="autoplay" allowfullscreen frameborder="0"></iframe>
-    <button onclick="closeVideo()" style="position:absolute; top:10px; right:10px; padding:10px; background:#fff;">❌ Close</button>
+    <iframe id="driveVideo" 
+            src="" 
+            width="100%" 
+            height="100%" 
+            allow="autoplay" 
+            allowfullscreen 
+            frameborder="0">
+    </iframe>
+    <button onclick="closeDrivePlayer()" style="position:absolute; top:10px; right:10px; background:#fff; padding:10px;">❌ Close</button>
   </div>
 </div>
 
 <script>
-  function openVideo() {
-    // Set the Google Drive preview link here
-    document.getElementById('driveVideo').src = "https://drive.google.com/file/d/1LlhXzW1tCpYr333wrxa5okuT3U2v_aDx/preview?autoplay=1";
-    document.getElementById('videoModal').style.display = "block";
+  function openDrivePlayer() {
+    const driveLink = "https://drive.google.com/file/d/1LlhXzW1tCpYr333wrxa5okuT3U2v_aDx/preview?autoplay=1";
+    document.getElementById("driveVideo").src = driveLink;
+    document.getElementById("drivePlayerModal").style.display = "block";
   }
 
-  function closeVideo() {
-    document.getElementById('videoModal').style.display = "none";
-    document.getElementById('driveVideo').src = ""; // Stop the video
+  function closeDrivePlayer() {
+    document.getElementById("drivePlayerModal").style.display = "none";
+    document.getElementById("driveVideo").src = ""; // Stops video
   }
 </script>
 </div>
